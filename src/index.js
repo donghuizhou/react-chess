@@ -5,10 +5,15 @@ import './index.css';
 // import Knight from './components/Knight';
 // import Square from './components/Square';
 import Board from './components/Board';
+import { observe } from './components/Game';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(
-  <Board knightPosition={[7, 4]} />,
-  document.getElementById('root')
-);
+const rootEl = document.getElementById('root');
+
+observe(knightPosition => 
+  ReactDOM.render(
+    <Board knightPosition={knightPosition} />,
+    rootEl
+  )
+)
 registerServiceWorker();
